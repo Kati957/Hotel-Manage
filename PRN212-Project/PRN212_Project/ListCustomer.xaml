@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="AssignmentPRN1.ListCustomer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AssignmentPRN1"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="10,45,10,99">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Grid.Column="0" Name="dvgDisplay" AutoGenerateColumns="False" CanUserAddRows="False" Margin="0,0,0,-73">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" Header="ID" Binding="{Binding CustomerId, Mode=OneWay}"/>
+                <DataGridTextColumn Width="*" Header="FullName" Binding="{Binding CustomerFullName, Mode=OneWay}"/>
+                <DataGridTextColumn Width="*" Header="Telephone" Binding="{Binding Telephone, Mode=OneWay}"/>
+                <DataGridTextColumn Width="*" Header="Email" Binding="{Binding EmailAddress, Mode=OneWay}"/>
+                <DataGridTextColumn Width="*" Header="DOB" Binding="{Binding CustomerBirthday, Mode=OneWay}"/>
+                <DataGridTextColumn Width="*" Header="Status" Binding="{Binding CustomerStatus, Mode=OneWay}"/>
+                <DataGridTextColumn Width="*" Header="Password" Binding="{Binding Password, Mode=OneWay}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Column="1" Margin="0,0,0,-73">
+            
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Width="50">Id</Label>
+                <TextBox IsReadOnly="True" Name="txtId" Width="200" Text="{Binding ElementName=dvgDisplay, Path=SelectedItem.CustomerId, Mode=OneWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Width="50">Name</Label>
+                <TextBox IsReadOnly="true" Name="txtName" Width="200" Text="{Binding ElementName=dvgDisplay, Path=SelectedItem.CustomerFullName, Mode=OneWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Width="50">Phone</Label>
+                <TextBox IsReadOnly="true" Name="txtPhone" Width="200" Text="{Binding ElementName=dvgDisplay, Path=SelectedItem.Telephone, Mode=OneWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Width="50">Email</Label>
+                <TextBox IsReadOnly="true" Name="txtEmail" Width="200" Text="{Binding ElementName=dvgDisplay, Path=SelectedItem.EmailAddress, Mode=OneWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Width="50">DOB</Label>
+                <TextBox IsReadOnly="true" Name="dpkDob" Width="200" Text="{Binding ElementName=dvgDisplay, Path=SelectedItem.CustomerBirthday, Mode=OneWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Width="50">Status</Label>
+                <TextBox   Name="txtStatus" Width="200" Text="{Binding ElementName=dvgDisplay, Path=SelectedItem.CustomerStatus, Mode=OneWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Width="50">Pass</Label>
+                <TextBox IsReadOnly="true" Name="txtPassword" Width="200" Text="{Binding ElementName=dvgDisplay, Path=SelectedItem.Password, Mode=OneWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+               
+                <Button Content="Update" Margin="5" Click="Button_UpdateClick"/>
+                <Button Content="Delete" Margin="5" Click="Button_DeleteClick"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+    
+
+</UserControl>

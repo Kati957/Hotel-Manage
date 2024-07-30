@@ -1,0 +1,50 @@
+﻿<Window x:Class="AssignmentPRN1.CustomerBooking"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CustomerBooking" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <Button Width="40px" Height="30px" Content="Back" Name="btnBack" Click="btnBack_Click"></Button>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1">
+
+            <Label FontSize="30" Content="Booking"/>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Width="70" Content="Start Date:"/>
+                <DatePicker x:Name="dpkStartDate" Width="200"  />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Width="70" Content="End Date:"/>
+                <DatePicker x:Name="dpkEndDate" Width="200"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Width="70" Content="Room Type:"/>
+                <ComboBox x:Name="cbxRoomType" Width="200" SelectedValue="{Binding SelectedItem.RoomType.RoomTypeName, ElementName=dgvDisplay, Mode=OneWay}" SelectionChanged="cbxRoomType_SelectionChanged"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Width="70">Room Number:</Label>
+                <ComboBox Name="cbxRoomNumber" Width="200" SelectedValue="{Binding ElementName=dgvDisplay, Path=SelectedItem.Room.RoomNumber, Mode=OneWay}" SelectionChanged="cbxRoomNumber_SelectionChanged"/>
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal">
+                <Label Width="70" Content="Total Price"/>
+                <TextBox x:Name="txtTotalPrice" Width="200" IsReadOnly="True" />
+            </StackPanel>
+
+            <Button x:Name="btnInsert" Content="Booking" Click="btnInsert_Click" Width="100" Height="30" HorizontalAlignment="Center" Margin="0 10"/>
+
+        </StackPanel>
+    </Grid>
+</Window>
